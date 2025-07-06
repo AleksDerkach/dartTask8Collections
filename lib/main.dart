@@ -3,6 +3,7 @@ import 'dart:math';
 void main() {
    taskList();
    taskSet(); 
+   taskMap();
 }
 
 taskList(){
@@ -62,4 +63,52 @@ taskSet() {
   final uniqueNamesDeepSeek = uaNamesDeepSeek.difference(uaNamesGPT);
   print(uniqueNamesDeepSeek);
  
+}
+
+taskMap() {
+  List<String> randomWords = [
+    'Андрій', 'Марія', 'Олександр', 'Ольга', 'Іван',
+    'Наталія', 'Михайло', 'Тетяна', 'Василь', 'Катерина',
+    'Петро', 'Юлія', 'Дмитро', 'Анастасія', 'Сергій',
+    'Ірина', 'Богдан', 'Вікторія', 'Володимир', 'Оксана',
+    'Ігор', 'Анна', 'Ярослав', 'Людмила', 'Віталій',
+    'Світлана', 'Роман', 'Ганна', 'Олег', 'Надія',
+    'Анатолій', 'Валентина', 'Артем', 'Лариса', 'Костянтин',
+    'Аліна', 'Максим', 'Інна', 'Станіслав', 'Софія',
+    'Владислав', 'Віра', 'Євген', 'Марина', 'Тарас',
+    'Дарина', 'Павло', 'Зоряна', 'Микола', 'Ярина'
+  ];
+
+  
+  Map<String, int> lengthWordMap = {
+    for (var word in randomWords)
+      word: word.length
+  };
+
+  print('Словник слів з їх довжиною:');
+  lengthWordMap.forEach((word, length) {
+    print('$word: $length');
+  });
+
+  print('\nВесь словник:');
+  print(lengthWordMap);
+  
+  // Chat GPT зробив заповнення Map наступним чином
+  // Досить цікаво
+
+  // Створюємо tempNouns тільки з парними довжинами слів
+  /* Map<String, int> tempNouns = {
+    for (var entry in lengthWordMap.entries)
+      if (entry.value % 2 == 0) entry.key: entry.value
+  }; */
+
+  Map<String, int> tempNouns = {};
+    for (var entry in lengthWordMap.entries) {
+      if (entry.value % 2 == 0) {
+        tempNouns.addAll({entry.key: entry.value});
+  }
+
+  print('\nФільтрований словник (tempNouns) з парною довжиною слів:');
+  print(tempNouns);
+}
 }
