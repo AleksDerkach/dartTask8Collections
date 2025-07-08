@@ -67,3 +67,16 @@ void parallelFetch() async {
   print('Мені: $age');
   print('Виконано за : ${stopwatch.elapsed.inSeconds} c.');
 }
+
+void delayedCountdown() async {
+  final res = await Countdown(5);
+  print(res);
+}
+
+Future<String> Countdown(int sec) async {
+  for (var i = sec; i > 0; i--) {
+    print('$i...');
+    await Future.delayed(Duration(seconds: 1));
+  }
+  return 'Старт!';
+}
