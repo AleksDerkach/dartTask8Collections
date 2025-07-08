@@ -6,13 +6,14 @@ void main() {
   //taskSet();
   //taskMap();
 
-  //fetchNameDelayedTwoSeconds();
-  //fetchAgeDelayedMilliseconds();
-  //sequentiallyFetch();
-  //parallelFetch();
-  //delayedCountdown();
+  fetchNameDelayedTwoSeconds();
+  fetchAgeDelayedMilliseconds();
+  sequentiallyFetch();
+  parallelFetch();
+  delayedCountdown();
 
   streamFromIterable();
+  streamFromPeriodic();
 }
 
 taskList() {

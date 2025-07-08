@@ -110,3 +110,15 @@ void printStreamWithListen(Stream<int> stream) {
     onDone: () => print('Стрім listen завершено'),
   );
 }
+
+streamFromPeriodic() async {
+  final stream = Stream.periodic(
+      Duration(seconds: 1), // Інтервал між значеннями
+      (count) => count + 1 // Генеруємо числа починаючи з 1
+      ).take(10); // Обмежуємо до 10 значень
+
+  await for (final number in stream) {
+    print('$number.,');
+  }
+  print('Відлік завершено!');
+}
