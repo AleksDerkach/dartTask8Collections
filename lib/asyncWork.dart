@@ -53,3 +53,17 @@ void sequentiallyFetch() async {
   print('Мені $age $yearWord');
   print('Час виконання: ${stopwatch.elapsed.inMilliseconds} мс');
 }
+
+void parallelFetch() async {
+  final stopwatch = Stopwatch()..start();
+
+  final res = await Future.wait([fetchName(), fetchAge()]);
+
+  final String name = res[0] as String;
+  final String age = res[1] as String;
+
+  stopwatch.stop();
+  print('Моє ім\'я: $name');
+  print('Мені: $age');
+  print('Виконано за : ${stopwatch.elapsed.inSeconds} c.');
+}
