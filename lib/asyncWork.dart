@@ -37,3 +37,19 @@ Future<String> fetchAge() async {
     return '30';
   });
 }
+
+void sequentiallyFetch() async {
+  final stopwatch = Stopwatch();
+  stopwatch.start();
+  String name = await fetchName();
+  String ageStr = await fetchAge();
+
+  stopwatch.stop();
+
+  int age = int.parse(ageStr);
+  String yearWord = formatYearWord(ageStr);
+
+  print('Мене звати $name');
+  print('Мені $age $yearWord');
+  print('Час виконання: ${stopwatch.elapsed.inMilliseconds} мс');
+}

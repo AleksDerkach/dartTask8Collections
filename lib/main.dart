@@ -6,8 +6,9 @@ void main() {
   //taskSet();
   //taskMap();
 
-  //fetchNameDelayedTwoSeconds();
+  fetchNameDelayedTwoSeconds();
   fetchAgeDelayedMilliseconds();
+  sequentiallyFetch();
 }
 
 taskList() {
