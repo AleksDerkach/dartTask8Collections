@@ -2,9 +2,9 @@ import 'dart:math';
 import 'package:flutter_collections/asyncWork.dart';
 
 void main() {
-  //taskList();
-  //taskSet();
-  //taskMap();
+  taskList();
+  taskSet();
+  taskMap();
 
   fetchNameDelayedTwoSeconds();
   fetchAgeDelayedMilliseconds();
@@ -14,6 +14,7 @@ void main() {
 
   streamFromIterable();
   streamFromPeriodic();
+  streamWithController();
 }
 
 taskList() {

@@ -122,3 +122,31 @@ streamFromPeriodic() async {
   }
   print('Відлік завершено!');
 }
+
+streamWithController() async {
+  // 1. Створюємо StreamController
+  final streamController = StreamController<String>();
+
+  // 2. Прослуховуємо стрім
+  streamController.stream.listen(
+    (value) {
+      print('Отримано значення: $value');
+    },
+    onDone: () {
+      print('Стрім завершено');
+    },
+    onError: (error) {
+      print('Сталася помилка: $error');
+    },
+  );
+
+  // 3. Додаємо значення вручну
+  streamController.sink.add('Hello');
+  streamController.sink.add('World');
+  streamController.sink.add('Dart');
+
+  // 4. Закриваємо контролер
+  Future.delayed(Duration(milliseconds: 100), () {
+    streamController.close();
+  });
+}
