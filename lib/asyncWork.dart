@@ -80,3 +80,33 @@ Future<String> Countdown(int sec) async {
   }
   return 'Старт!';
 }
+
+streamFromIterable() async {
+  final stream = Stream.fromIterable([1, 2, 3, 4, 5]);
+
+  print('Вивести з await for:');
+  await printStreamWithAwaitFor(stream);
+}
+
+// await for
+Future<void> printStreamWithAwaitFor(Stream<int> stream) async {
+  await for (final number in stream) {
+    print(number);
+    await Future.delayed(Duration(milliseconds: 500));
+  }
+
+  final streamForListen = Stream.fromIterable([1, 2, 3, 4, 5]);
+
+  print('\nВивести з listen:');
+  printStreamWithListen(streamForListen);
+}
+
+void printStreamWithListen(Stream<int> stream) {
+  stream.listen(
+    (number) {
+      print(number);
+    },
+    onError: (error) => print('Помилка: $error'),
+    onDone: () => print('Стрім listen завершено'),
+  );
+}
