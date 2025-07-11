@@ -8,7 +8,7 @@ void fetchNameDelayedTwoSeconds() async {
 Future<String> fetchName() async {
   // Імітація затримки в 2 секунди
   return await Future.delayed(Duration(seconds: 2), () {
-    return 'Олександр'; // Твоє ім'я
+    return 'Олександр';
   });
 }
 
@@ -19,20 +19,20 @@ void fetchAgeDelayedMilliseconds() async {
 }
 
 String formatYearWord(String age) {
-  int lastDigit = int.parse(age.substring(1));
+  final lastDigit = int.parse(age.substring(1));
 
   switch (lastDigit) {
     case 1:
-      return "років";
+      return 'років';
     case >= 2 && <= 4:
-      return "роки";
+      return 'роки';
     default:
-      return "років";
+      return 'років';
   }
 }
 
 Future<String> fetchAge() async {
-  // Імітація затримки в 1500 секунди
+  // Імітація затримки в 1500 мілісекунди
   return await Future.delayed(Duration(milliseconds: 1500), () {
     return '30';
   });
@@ -69,11 +69,11 @@ void parallelFetch() async {
 }
 
 void delayedCountdown() async {
-  final res = await Countdown(5);
+  final res = await countDown(5);
   print(res);
 }
 
-Future<String> Countdown(int sec) async {
+Future<String> countDown(int sec) async {
   for (var i = sec; i > 0; i--) {
     print('$i...');
     await Future.delayed(Duration(seconds: 1));
@@ -88,7 +88,6 @@ streamFromIterable() async {
   await printStreamWithAwaitFor(stream);
 }
 
-// await for
 Future<void> printStreamWithAwaitFor(Stream<int> stream) async {
   await for (final number in stream) {
     print(number);
